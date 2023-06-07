@@ -1,13 +1,13 @@
 /* Global Variables */
 const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
 
-const apiKey = '5f34b76a845e82eff4f80c95aecf47a2';
+const apiKey = '5f34b76a845e82eff4f80c95aecf47a2&units=metric';
 
 const serverUrl = 'http://127.0.0.1:3000';
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
 
 const getWeatherData = async () => {
   const zip = document.getElementById('zip').value;
@@ -31,7 +31,7 @@ const renderUI = async () => {
   const res = await fetch(`${serverUrl}/recent`);
   const data = await res.json();
   document.getElementById('date').innerHTML = data.newDate;
-  document.getElementById('temp').innerHTML = data.temp + ' Kelvin';
+  document.getElementById('temp').innerHTML = data.temp + '&degC';
   document.getElementById('content').innerHTML = data.userResponse;
   return data;
 };
